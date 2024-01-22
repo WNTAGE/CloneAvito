@@ -1,15 +1,26 @@
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Home from "./views/Home/Home.tsx";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Header from './Components/Header/Header'
+import Home from './Views/Home/Home'
+import './index.css'
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <Routes>
-      <Route element={<Header />}>
-        <Route index element={<Home />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
-);
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
+})
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+	<QueryClientProvider client={queryClient}>
+		<BrowserRouter>
+			<Routes>
+				<Route element={<Header />}>
+					<Route index element={<Home />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	</QueryClientProvider>
+)

@@ -1,58 +1,43 @@
-/* :root {
-  --accent: #121212;
-  --backgroundPrimary: #f6f7f8;
-  --backgroundSecondary: #fff;
-  --backgroundTeritary: #f6f7f8;
-  --backButtonColor: #f6f7f8;
-  --textPrimary: #000;
-  --textSecondary: rgba(0, 0, 0, 0.4);
-  --onPrimary: #fff;
-  --loader: #0077ff;
-  --icon: #000;
-  --activeTabBar: #0077ff;
-  --activeTab: #000;
-  --buttonPrimary: #0077ff;
-  --buttonPrimary-hover: #1a85ff;
-  --buttonSecondary: #fff;
-  --onSecondary-primary: #000;
-  --onSecondary-secondary: rgba(0, 0, 0, 0.4);
-  --border: rgba(0, 0, 0, 0.12);
-  --smallChevron: #202022;
-  --smallChevronIcon: #fff;
-  --danger: #e64646;
-  --dangerBackground: rgba(230, 70, 70, 0.12);
-  --success: #4bb34b;
-  --successBackground: rgba(75, 179, 75, 0.12);
-  --warning: #ffa000;
-  --warningBackground: rgba(255, 160, 0, 0.12);
+:root {
+	--accent: #121212;
+	--backgroundPrimary: #f6f7f8;
+	--backgroundSecondary: #fff;
+	--backgroundTeritary: #f6f7f8;
+	--backButtonColor: #f6f7f8;
+	--textPrimary: #000;
+	--textSecondary: rgba(0, 0, 0, 0.4);
+	--onPrimary: #fff;
+	--loader: #0077ff;
+	--icon: #000;
+	--activeTabBar: #0077ff;
+	--activeTab: #000;
+	--buttonPrimary: #0077ff;
+	--buttonPrimary-hover: #1a85ff;
+	--buttonSecondary: #fff;
+	--onSecondary-primary: #000;
+	--onSecondary-secondary: rgba(0, 0, 0, 0.4);
+	--border: rgba(0, 0, 0, 0.12);
+	--smallChevron: #202022;
+	--smallChevronIcon: #fff;
+	--danger: #e64646;
+	--dangerBackground: rgba(230, 70, 70, 0.12);
+	--success: #4bb34b;
+	--successBackground: rgba(75, 179, 75, 0.12);
+	--warning: #ffa000;
+	--warningBackground: rgba(255, 160, 0, 0.12);
 }
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
-} */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0px 24px;
-}
-a {
-  text-decoration: none;
-  color: unset;
-}
-li {
-  list-style: none;
-}
-button {
-  background: transparent;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
 }

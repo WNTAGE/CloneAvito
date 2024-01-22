@@ -1,5 +1,7 @@
-const Container = ({ children }: any) => {
-  return <div className="container">{children}</div>;
-};
+import styles from './Container.module.scss'
 
-export default Container;
+const Container = ({ children }: any) => {
+	return <div className={styles.container}>{children}</div>
+}
+
+export default Container
