@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import Container from '../../Components/Container/Container'
+import Container from '../../сomponents/Container/Container'
 
 const Home = () => {
 	const { t } = useTranslation()
