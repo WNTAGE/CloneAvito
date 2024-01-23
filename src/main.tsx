@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import './Utils/helpers/i18/i18n'
-import Home from './Views/Home/Home'
 import './index.css'
+import Home from './views/Home/Home'
 import Header from './сomponents/Header/Header'
 
 const queryClient = new QueryClient({
