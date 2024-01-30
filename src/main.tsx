@@ -8,7 +8,7 @@ import Home from "./views/Home/Home";
 import Header from "./сomponents/Header/Header";
 import SignUp from "./views/Auth/SignUp";
 import SignIn from "./views/Auth/signIn";
-import PersonalCabinet from "@/views/PersonalCabinet/personalCabinet";
+import PersonalCabinet from "./views/PersonalCabinet/PersonalCabinet";
 
 const queryClient = new QueryClient({
   defaultOptions: {

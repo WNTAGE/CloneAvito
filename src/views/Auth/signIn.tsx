@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { CONFIG } from "@/config";
 import { useNavigate } from "react-router-dom";
+import { CONFIG } from "@/config";
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -17,7 +16,6 @@ const SignIn: React.FC = () => {
   };
 
   const handleSignIn = async () => {
-    navigate("/personalCabinet");
     try {
       const response = await axios.post(
         `
@@ -26,24 +24,46 @@ const SignIn: React.FC = () => {
       );
 
       console.log("Sign in successful", response.data);
+
+      document.cookie = `token=${response.data.token}; path=/`;
+
+      navigate("/personalCabinet");
     } catch (error) {
       //@ts-ignore
       console.error("Sign in failed", error.response?.data);
     }
   };
+  const tokenCookie = document.cookie
+    .split(";")
+    .find((cookie) => cookie.trim().startsWith("token="));
 
+  if (tokenCookie) {
+    console.log('Куки "token" найдены:', tokenCookie);
+  } else {
+    console.log('Куки "token" не найдены');
+  }
   return (
     <div>
       <h2>Sign In</h2>
       <form>
         <label>
           Email:
-          <input type="text" name="email" onChange={handleChange} />
+          <input
+            type="text"
+            value={formData.email}
+            onChange={handleChange}
+            name="email"
+          />
         </label>
         <br />
         <label>
           Password:
-          <input type="password" name="password" onChange={handleChange} />
+          <input
+            type="password"
+            value={formData.password}
+            onChange={handleChange}
+            name="password"
+          />
         </label>
         <br />
         <button type="button" onClick={handleSignIn}>
