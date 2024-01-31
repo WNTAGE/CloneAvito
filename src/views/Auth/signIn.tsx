@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { CONFIG } from "@/config";
 import { useNavigate } from "react-router-dom";
+import { CONFIG } from "@/config";
+import Cookies from "js-cookie";
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -17,7 +17,6 @@ const SignIn: React.FC = () => {
   };
 
   const handleSignIn = async () => {
-    navigate("/personalCabinet");
     try {
       const response = await axios.post(
         `
@@ -26,24 +25,48 @@ const SignIn: React.FC = () => {
       );
 
       console.log("Sign in successful", response.data);
+
+      if (response.status === 201) {
+        Cookies.set("token", response.data.token, { path: "/" });
+
+        navigate("/personalCabinet");
+      } else {
+        console.error("Не удалось войти. Статус ответа:", response.status);
+      }
     } catch (error) {
       //@ts-ignore
       console.error("Sign in failed", error.response?.data);
     }
   };
 
+  const tokenCookie = Cookies.get("token");
+
+  console.log(
+    tokenCookie ? 'Куки "token" найдены:' : 'Куки "token" не найдены',
+    tokenCookie
+  );
   return (
     <div>
       <h2>Sign In</h2>
       <form>
         <label>
           Email:
-          <input type="text" name="email" onChange={handleChange} />
+          <input
+            type="text"
+            value={formData.email}
+            onChange={handleChange}
+            name="email"
+          />
         </label>
         <br />
         <label>
           Password:
-          <input type="password" name="password" onChange={handleChange} />
+          <input
+            type="password"
+            value={formData.password}
+            onChange={handleChange}
+            name="password"
+          />
         </label>
         <br />
         <button type="button" onClick={handleSignIn}>

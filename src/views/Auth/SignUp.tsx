@@ -17,11 +17,7 @@ const SignUp: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      const response = await axios.post(
-        `
-        ${CONFIG.API}/auth/signUp`,
-        data
-      );
+      const response = await axios.post(`${CONFIG.API}/auth/signUp`, data);
       console.log("Sign up successful", response.data);
     } catch (error) {
       //@ts-ignore
