@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CONFIG } from "@/config";
+import Cookies from "js-cookie";
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -25,23 +26,25 @@ const SignIn: React.FC = () => {
 
       console.log("Sign in successful", response.data);
 
-      document.cookie = `token=${response.data.token}; path=/`;
+      if (response.status === 201) {
+        Cookies.set("token", response.data.token, { path: "/" });
 
-      navigate("/personalCabinet");
+        navigate("/personalCabinet");
+      } else {
+        console.error("Не удалось войти. Статус ответа:", response.status);
+      }
     } catch (error) {
       //@ts-ignore
       console.error("Sign in failed", error.response?.data);
     }
   };
-  const tokenCookie = document.cookie
-    .split(";")
-    .find((cookie) => cookie.trim().startsWith("token="));
 
-  if (tokenCookie) {
-    console.log('Куки "token" найдены:', tokenCookie);
-  } else {
-    console.log('Куки "token" не найдены');
-  }
+  const tokenCookie = Cookies.get("token");
+
+  console.log(
+    tokenCookie ? 'Куки "token" найдены:' : 'Куки "token" не найдены',
+    tokenCookie
+  );
   return (
     <div>
       <h2>Sign In</h2>
